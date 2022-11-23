@@ -15,6 +15,16 @@ def home():
     return render_template("index.html", blogs=blogs)
 
 
+@app.route('/about')
+def about_redirect():
+    return render_template('about.html')
+
+
+@app.route('/contact')
+def contact_redirect():
+    return render_template('contact.html')
+
+
 @app.route('/post/<int:blog_id>')
 def get_post(blog_id):
     selected_post = None
@@ -22,7 +32,6 @@ def get_post(blog_id):
         if blog['id'] == blog_id:
             selected_post = blog
     return render_template('post.html', post=selected_post)
-
 
 if __name__ == "__main__":
     app.run(debug=True)
